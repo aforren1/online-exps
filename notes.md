@@ -81,6 +81,22 @@ https://psychopy.org/timing/2020/table3.html
  - Phaser event loop: https://github.com/photonstorm/phaser/blob/b14b60516ad976ace77af563eb1200922d859c12/src/core/Game.js
  - psychoJS event loop: https://github.com/psychopy/psychojs/blob/1fc76d14618acd267d58677dd9e725d6b21f1a74/js/core/Window.js#L305
  - Fancy pants chrome feature: https://developers.google.com/web/updates/2019/05/desynchronized, https://bugzilla.mozilla.org/show_bug.cgi?id=1536809
+   uses single buffer rendering
+ - powerPreference (if interactive task like reaching)
+ - Impossible to detect whether muted, what sort of audio device?
+ - Detect if JS disabled (i.e. just show something if disabled) https://stackoverflow.com/questions/121203/how-to-detect-if-javascript-is-disabled
+ - Detect mobile device? https://stackoverflow.com/a/29509267/2690232
+ - Language https://stackoverflow.com/questions/17680413/get-visitors-language-country-code-with-javascript-client-side
+ - High DPI https://phaser.io/phaser3/devlog/123
+ - lock mobile orientation
+ - option to download zip if failure to upload, and send for manual code (https://stuk.github.io/jszip/); any way to safely verify contents aren't disturbed?
+ - Or serialize to bytes with sanity check at the beginning? Ask Chris F
+ - Shared mailbox: https://yale.service-now.com/it?id=support_article&sys_id=b2acd67e1bbdb744d56efd13cd4bcb96
+ - Special limited builds (if phaser)
+ - PsychoJS uses gl.readPixels to block until done rendering (may not be necessary), and gl.finish to block until fully rendered (if we can ensure WebGL2, use fence sync objects?). 
+ - Related, waiting for fence on worker: https://stackoverflow.com/questions/33640702/opengl-glclientwaitsync-on-separate-thread (NB WebGL 2 suppoort is spotty https://caniuse.com/#feat=webgl2)
+ - https://computergraphics.stackexchange.com/questions/4964/how-to-know-when-rendering-is-complete-in-webgl
+ - https://web.dev/measure/ for perf tips on site
 
 # Linkz
 https://sites.williams.edu/nk2/files/2018/10/VCK.pdf <-- this is gold, apparently (addresses most things I care about)
