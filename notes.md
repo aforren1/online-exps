@@ -97,8 +97,55 @@ https://psychopy.org/timing/2020/table3.html
  - Related, waiting for fence on worker: https://stackoverflow.com/questions/33640702/opengl-glclientwaitsync-on-separate-thread (NB WebGL 2 suppoort is spotty https://caniuse.com/#feat=webgl2)
  - https://computergraphics.stackexchange.com/questions/4964/how-to-know-when-rendering-is-complete-in-webgl
  - https://web.dev/measure/ for perf tips on site
+ - Special survey code should be generated at the end of the task (though server needs to verify that all trials are done)
+ - Should we not pay if participant fails all checks? or just bite the bullet and exclude the data (but pay)
+ - Personal info to ask for (verify not counted as PHI): age (either exact or range), sex &| gender, race &| ethnicity
+ - Copy to clipboard: https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+ - Browser version can be useful for understanding the resolution of `performance.now`
+ - Get browser info, OS, etc. https://github.com/faisalman/ua-parser-js
+ - For multiplayer, see how multiuser sketchpad does it (https://glitch.com/edit/#!/multiuser-sketchpad?path=README.md%3A1%3A0) i.e. binary websockets
+ - Get partial data or something before tab closed: https://stackoverflow.com/questions/3888902/detect-browser-or-tab-closing
+ - Catch bots at the beginning: https://css-tricks.com/using-netlify-forms-and-netlify-functions-to-build-an-email-sign-up-widget/
+ - Prolific requires redirecting to specific site (how to: https://stackoverflow.com/questions/503093/how-do-i-redirect-to-another-webpage)
+ - Handling the same study on prolific & mturk: pass parameters via URL, or check something like `document.referrer`? option 1 is easier
+ - Handling group assignment across prolific & mturk-- (tentatively) assign as soon as link clicked
+ - Upload zips to EliApps google drive (via google drive API, if possible)
 
 # Linkz
 https://sites.williams.edu/nk2/files/2018/10/VCK.pdf <-- this is gold, apparently (addresses most things I care about)
 https://github.com/alan-s-lee/OnPoint <-- they have ok instructions about how they do online things
 https://celss.iserp.columbia.edu/sites/default/files/content/documents/tutorials/MTurk_Tutorial_Apr_2020.pdf
+https://blog.mturk.com/getting-great-survey-results-from-mturk-and-qualtrics-be1704ff9786 for getting an idea of dealing w/ submitted codes
+
+# Another section
+
+Modules/packages/??? to use:
+ - phaser for graphics & such
+ - devtools-detect for detecting if devtools opened
+ - log4javascript for logging? + custom handling for logging to file https://github.com/psychopy/psychojs/blob/master/js/core/Logger.js (NB logging takes awhile)
+
+# General flow 
+
+1. User clicks on link from MTurk, Prolific, etc. (presumably this also filters people out who have already participated?)
+2a. If multiple conditions, call home to server and get the right condition set 
+2b. If one condition, chug on ahead?
+2c. Actually in either case, generate the unique ID that the participant will be entering
+3. Collect basic demographics (make sure we're not getting any PHI!) (and get any browser/OS/device info we can)
+4. Start task.
+5a. If decision-making sort of thing, call home for checking answers?
+5b. If rotation/something innocuous, just send trial table at onset
+6. Log periodically; messages/game state and/or actual (incomplete data). If they exit early, should we drop data automatically?
+7. At the end, display an easy-to-copy code (if MTurk) or auto redirect (if prolific).
+8a. If MTurk code fails to display (should we just send it at the beginning, and check all data is there?), give option to download zip & send to designated email
+9. Run quick server-side checks (failed sanity/robot checks? basic individual-level plots?), email to designated email
+10. Designated emailee checks report, and responds with "accept", "accept+bonus", "reject"?
+11. If accept/accept+bonus, lock in as a success for that condition
+12. If multi-day & accept, schedule an automated email for n days in the future (with message about adding bonus)
+
+# Use cases
+
+ - Generally desirable to not require 
+ - For gambling-ish things (e.g. multi-armed bandit), probably best off getting server to check answers?
+ - For reaching tasks, can send the trial table ahead of time (or bake it directly into the exp, depending)
+ - For multi-user, lots of depends (sharing game state/physics? one other, two others?)
+ - For multi-day, need to work out scheduling subsequent tasks & adding bonuses
