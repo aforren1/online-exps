@@ -110,6 +110,8 @@ https://psychopy.org/timing/2020/table3.html
  - Handling the same study on prolific & mturk: pass parameters via URL, or check something like `document.referrer`? option 1 is easier
  - Handling group assignment across prolific & mturk-- (tentatively) assign as soon as link clicked
  - Upload zips to EliApps google drive (via google drive API, if possible)
+ - Tried emscripten + SDL to get higher resolution clocks + no mouse acceleration, and was thoroughly unsuccessful (everything calls down to web tech in the end)
+ - "native messaging" is an option, but intrusive (how do people install the app??)
 
 # Linkz
 https://sites.williams.edu/nk2/files/2018/10/VCK.pdf <-- this is gold, apparently (addresses most things I care about)

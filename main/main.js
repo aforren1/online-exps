@@ -3,6 +3,9 @@ window.addEventListener('devtoolschange', event => {
     console.log('DevTools orientation:', event.detail.orientation);
 });
 
+var parser = new UAParser();
+console.log(JSON.stringify(parser.getResult()));
+
 var config = {
     type: Phaser.WEBGL,
     width: screen.width,// * window.devicePixelRatio,
@@ -28,8 +31,9 @@ var game = new Phaser.Game(config);
 
 function create ()
 {
+    this.cameras.main.setBounds(-screen.width / 2, -screen.height / 2, screen.width, screen.height);
     graphics = this.add.graphics();
-    var r1 = this.add.circle(800, 800, 80, 0x6666ff);
+    var r1 = this.add.circle(-100, -100, 80, 0x6666ff);
     r1.setInteractive();
     r1.on('pointerup', function () {
         if (this.scale.isFullscreen) { this.scale.stopFullscreen(); }
@@ -66,4 +70,6 @@ function update ()
 
     graphics.fillStyle(0xff0000, 1);
     graphics.fillCircle(follower.vec.x, follower.vec.y, 12);
+    graphics.fillStyle(0x00ff00, 1);
+    graphics.fillCircle(0, 0, 24);
 }
