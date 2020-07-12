@@ -1,5 +1,4 @@
 
-
 var MainScene = new Phaser.Class({
     Extends: Phaser.Scene,
     initialize: function MainScene() {
@@ -9,13 +8,16 @@ var MainScene = new Phaser.Class({
     create: function () {
         this.cameras.main.setBounds(-screen.width / 2, -screen.height / 2,
             screen.width, screen.height);
+        this.counter = 0;
+        this.text = this.add.text(0, 100, this.counter, { color: 'white', fontFamily: 'Arial', fontSize: '32px' });
+        this.text.setOrigin(0.5, 0.5);
         this.blob = this.add.rectangle(0, 0, 80, 40, 0x6666ff);
         this.blob.setStrokeStyle(4, 0xffffff);
         this.tweens.add({
             targets: this.blob,
             angle: 180,
             duration: 500,
-            ease: 'Linear',
+            ease: 'Sine.InOut',
             yoyo: true,
             repeat: -1
         });
@@ -29,7 +31,16 @@ var MainScene = new Phaser.Class({
             this.scene.pause();
             this.scene.launch('pauseScene');
         }, this);
+        // just in case, pausing when focus lost
+        this.game.events.on('hidden', function () {
+            this.scene.pause();
+            this.scene.launch('pauseScene');
+        }, this);
 
+    },
+    update: function () {
+        this.counter += 0.1;
+        this.text.setText(parseInt(this.counter));
     }
 });
 
@@ -40,6 +51,7 @@ var PauseScene = new Phaser.Class({
         this.button;
     },
     create: function () {
+        this.cameras.main.setBackgroundColor('rgba(1, 1, 1, 0.7)');
         this.button = this.add.circle(100, 100, 60, 0xff0000);
         this.button.setInteractive();
         this.button.on('pointerup', function () {
