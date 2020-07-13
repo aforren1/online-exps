@@ -25,6 +25,7 @@ function create ()
     this.input.setPollAlways(); // TODO necessary?
 
     var target = this.add.rectangle(0, 0, 80, 60, 0x6666ff);
+    target.setOrigin(0.5, 0.5);
     target.setInteractive();
     target.on('pointerover', function () {
         target.setFillStyle(0xff6666);
