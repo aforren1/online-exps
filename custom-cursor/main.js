@@ -3,6 +3,10 @@ var config = {
     parent: 'phaser-example',
     width: screen.width,
     height: screen.height,
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
+    },
     backgroundColor: '#2d2d2d',
     scene: {
         create: create
