@@ -1,78 +1,83 @@
-<style>
-    .login {
-      background: #eceeee;
-      border: 1px solid #42464b;
-      border-radius: 6px;
-      height: 160px;
-      margin: 20px auto 0;
-      width: 298px;
-    }
-    .login h1 {
-      background-image: linear-gradient(top, #f1f3f3, #d4dae0);
-      border-bottom: 1px solid #a6abaf;
-      border-radius: 6px 6px 0 0;
-      box-sizing: border-box;
-      color: #727678;
-      display: block;
-      height: 43px;
-      font: 600 14px/1 'Open Sans', sans-serif;
-      padding-top: 14px;
-      margin: 0;
-      text-align: center;
-      text-shadow: 0 -1px 0 rgba(0,0,0,0.2), 0 1px 0 #fff;
-    }
-    input[type="text"] {
-      background: linear-gradient(top, #d6d7d7, #dee0e0);
-      border: 1px solid #a1a3a3;
-      border-radius: 4px;
-      box-shadow: 0 1px #fff;
-      box-sizing: border-box;
-      color: #696969;
-      height: 39px;
-      margin: 31px 0 0 29px;
-      padding-left: 37px;
-      transition: box-shadow 0.3s;
-      width: 240px;
-    }
-    input[type="text"]:focus {
-      box-shadow: 0 0 4px 1px rgba(55, 166, 155, 0.3);
-      outline: 0;
-    }
 
-    input[type="submit"] {
-      width:240px;
-      height:35px;
-      display:block;
-      font-family:Arial, "Helvetica", sans-serif;
-      font-size:16px;
-      font-weight:bold;
-      color:#fff;
-      text-decoration:none;
-      text-transform:uppercase;
-      text-align:center;
-      text-shadow:1px 1px 0px #37a69b;
-      padding-top:6px;
-      margin: 29px 0 0 29px;
-      position:relative;
-      cursor:pointer;
-      border: none;  
-      background-color: #37a69b;
-      background-image: linear-gradient(top,#3db0a6,#3111);
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      border-bottom-left-radius:5px;
-      box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
-    }
-    
-    input[type="submit"]:active {
-      top:3px;
-      box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #31524d, 0px 5px 3px #999;
-    }
+<!--Very much based on https://codepen.io/freeCodeCamp/pen/VPaoNP-->
 
-    </style>
-    
-    <div class="login">
-        <input type="text" placeholder="Username" id="username" name="username">
-        <input type="submit" value="Submit" name="loginButton">
+<head>
+  <link rel="stylesheet" type="text/css" href="form.css">
+</head>
+<div class="container">
+
+<form id="survey-form" action="" onsubmit="return false">
+    <div class="form-group">
+      <h1>Survey (optional)</h1>
     </div>
+    <div class="form-group">
+      <label id="user" for="username">Username</label>
+      <input type="text" placeholder="Username" id="username" name="username">
+    </div>
+    <div class="form-group">
+      <label id="ag" for="age">Age</label>
+      <input type="number" placeholder="Optional" min="18" max="110" id="age" name="age">
+    </div>
+    <!--https://center.dso.iastate.edu/sites/default/files/Documents/Classroom/Asking%20about%20Gender%20and%20Sexuality.pdf-->
+    <div class="form-group">
+      <p>Sex Assigned at Birth</p>
+      <label>
+        <input type="radio" name="sex" value="na" class="input-radio" checked>Prefer not to respond
+      </label>
+      <label>
+        <input type="radio" name="sex" value="male" class="input-radio">Male
+      </label>
+      <label>
+        <input type="radio" name="sex" value="female" class="input-radio">Female
+      </label>
+      <label>
+        <input type="radio" name="sex" value="intersex" class="input-radio">Intersex
+      </label>
+    </div>
+      <!--https://ir.aa.ufl.edu/surveys/race-and-ethnicity-survey/#NewRaceandEthnicityStandards-->
+    <div class="form-group">
+      <p>Race</p>
+      <label>
+        <input type="checkbox" name="race" value="nat_am" class="input-checkbox">
+        American Indian or Alaska Native
+      </label>
+      <label>
+        <input type="checkbox" name="race" value="asian" class="input-checkbox">Asian
+      </label>
+      <label>
+        <input type="checkbox" name="race" value="black" class="input-checkbox">Black
+      </label>
+      <label>
+        <input type="checkbox" name="race" value="pacific" class="input-checkbox">
+        Native Hawaiian or Other Pacific Islander
+      </label>
+      <label>
+        <input type="checkbox" name="race" value="white" class="input-checkbox">White
+      </label>
+    </div>
+
+    <div class="form-group">
+      <p>Ethnicity</p>
+      <label>
+        <input type="radio" name="ethnicity" value="na" class="input-radio" checked>Prefer not to respond
+      </label>
+      <label>
+        <input type="radio" name="ethnicity" value="hispanic" class="input-radio">Hispanic or Latino or Spanish Origin
+      </label>
+      <label>
+        <input type="radio" name="ethnicity" value="not_hispanic" class="input-radio">Not Hispanic or Latino or Spanish Origin
+      </label>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Submit" name="submit" class="submit-button"></input>
+    </div>
+</form>
+</div>
+
+<!-- Apparently if we use the phaser GameObject, we can't access these
+  (but I haven't tried very hard)
+<script type="text/javascript">
+(new URL(window.location.href)).searchParams.forEach((x, y) =>
+    document.getElementById(y).value = x)
+</script>
+-->
