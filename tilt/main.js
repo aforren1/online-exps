@@ -24,7 +24,7 @@ function create() {
 
     var cursor = this.add.circle(0, 0, 17.5, 0xff00ff);
 
-    if (window.DeviceOrientationEvent) {
+    if (screen.orientation.type.includes("portrait")) { // this doesn't really work to detect if we have motion sensors
         window.addEventListener("deviceorientation", function(event) {
             // alpha: rotation around z-axis
             cursor.x += event.gamma/10;
@@ -35,10 +35,11 @@ function create() {
     } else {
         this.input.on('pointermove', function (pointer) {
             // worldX/Y give pointer relative to most recent camera
-            cursor.x += pointer.worldX;
-            cursor.y += pointer.worldY;
+            cursor.x += pointer.velocity.x/2;
+            cursor.y += pointer.velocity.y/2;
+
             cursor.x = Phaser.Math.Wrap(cursor.x, -game.renderer.width/2, game.renderer.width/2);
-            cursor.y = Phaser.Math.Wrap(cursor.y, -game.renderer.height/2, game.renderer.height/2);
+            cursor.y = Phaser.Math.Wrap(cursor.y, -game.renderer.height / 2, game.renderer.height / 2);
         });
     }
 }
