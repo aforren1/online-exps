@@ -24,13 +24,13 @@ function create() {
 
     var cursor = this.add.circle(0, 0, 17.5, 0xff00ff);
 
-    if (window.DeviceMotionEvent) {
+    if (false) {
         window.addEventListener("devicemotion", function(event) {
             // alpha: rotation around z-axis
-            cursor.x += event.acceleration.x;
-            cursor.y += event.acceleration.y;
-            cursor.x = Phaser.Math.Wrap(cursor.x, 0, game.renderer.width);
-            cursor.y = Phaser.Math.Wrap(cursor.y, 0, game.renderer.height);
+            cursor.x += event.acceleration.x/10;
+            cursor.y += event.acceleration.y/10;
+            cursor.x = Phaser.Math.Wrap(cursor.x, -game.renderer.width/2, game.renderer.width/2);
+            cursor.y = Phaser.Math.Wrap(cursor.y, -game.renderer.height/2, game.renderer.height/2);
         }, true);
     } else {
         this.input.on('pointermove', function (pointer) {
