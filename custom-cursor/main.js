@@ -1,8 +1,8 @@
 var config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
-    width: 800,
-    height: 800,
+    width: screen.width,
+    height: screen.height,
     backgroundColor: '#2d2d2d',
     scene: {
         create: create
@@ -13,6 +13,9 @@ var config = {
 
 function create ()
 {
+    this.input.once('pointerup', function () {
+        this.scale.startFullscreen();
+    }, this);
     this.cameras.main.setBounds(-config.width / 2, -config.height / 2, config.width, config.height);
 
     // using a custom cursor image is best for latency (b/c we're subbing out the hardware cursor), but browser support (particularly Edge/IE) is finicky
