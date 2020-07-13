@@ -12,7 +12,7 @@ var config = {
         create: create
     },
     desynchronized: true, // here be dragons (and also only works in chrome)
-    stencil: false
+    stencil: false // presumably this saves us some amount of CPU/GPU?
 };
 
 function create ()
@@ -38,17 +38,15 @@ function create ()
         target.setFillStyle(0x6666ff);
     });
 
-    var rotcursor = this.add.circle(0, 0, 18);
-    var jscursor = this.add.circle(0, 0, 18);
+    var rotcursor = this.add.circle(0, 0, 17.5);
+    var jscursor = this.add.circle(0, 0, 17.5);
     rotcursor.setFillStyle(0x11ff22);
     jscursor.setFillStyle(0xff33ff);
     this.input.on('pointermove', function (pointer) {
         // worldX/Y give pointer relative to most recent camera
-        jscursor.x = pointer.worldX;
-        jscursor.y = pointer.worldY;
+        [jscursor.x, jscursor.y] = [pointer.worldX, pointer.worldY];
         var tmp = Phaser.Math.Rotate({x: pointer.worldX, y: pointer.worldY}, Phaser.Math.DegToRad(30));
-        rotcursor.x = tmp.x;
-        rotcursor.y = tmp.y;
+        [rotcursor.x, rotcursor.y] = [tmp.x, tmp.y];
     });
 }
 
