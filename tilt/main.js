@@ -27,8 +27,8 @@ function create() {
     if (window.DeviceOrientationEvent) {
         window.addEventListener("deviceorientation", function(event) {
             // alpha: rotation around z-axis
-            cursor.x += event.gamma;
-            cursor.y += event.beta;
+            cursor.x += event.gamma/10;
+            cursor.y += event.beta/10;
             cursor.x = Phaser.Math.Wrap(cursor.x, -game.renderer.width/2, game.renderer.width/2);
             cursor.y = Phaser.Math.Wrap(cursor.y, -game.renderer.height/2, game.renderer.height/2);
         }, true);
