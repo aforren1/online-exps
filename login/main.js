@@ -10,7 +10,13 @@ var config = {
     scene: {
         preload: preload,
         create: create
-    }
+    },
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 }
+        }
+    },
 };
 
 var element;
@@ -24,6 +30,7 @@ function preload ()
 function create()
 {
     this.cameras.main.setBounds(-config.width / 2, -config.height / 2, config.width, config.height);
+    this.cameras.main.setBackgroundColor('rgb(100, 100, 100)');
     text = this.add.text(0, 300, 'Other settings in console.\nFullscreen+DOM element does not\nwork well yet.', { color: 'green', fontFamily: 'Arial', fontsize: '24px' });
     text.setOrigin(0.5, 0.5);
     var text = this.add.text(0, -300, 'Age will show here.', { color: 'white', fontFamily: 'Arial', fontSize: '32px' });
@@ -67,4 +74,22 @@ function create()
             console.log(JSON.stringify(info));
         }
     });
+
+    var r1 = this.add.circle(-200, -100, 80, 0x99bbee);
+    var r2 = this.add.circle(200, 100, 90, 0xeebb99);
+    this.physics.world.setBounds(-config.width / 2, -config.height / 2, config.width, config.height);
+    this.physics.add.existing(r1);
+    this.physics.add.existing(r2);
+    this.physics.add.collider(r1, r2);
+    r1.body.velocity.x = 300;
+    r1.body.velocity.y = 250;
+    r1.body.bounce.x = 1;
+    r1.body.bounce.y = 1;
+    r1.body.collideWorldBounds = true;
+
+    r2.body.velocity.x = -250;
+    r2.body.velocity.y = -300;
+    r2.body.bounce.x = 1;
+    r2.body.bounce.y = 1;
+    r2.body.collideWorldBounds = true;
 }

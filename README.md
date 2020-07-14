@@ -1,6 +1,6 @@
 
 Things:
-  - Instructions for building more minimal phaser (even the 3.24.0 minified is almost 1MB)
+  - Instructions for building more minimal phaser (even the 3.24.1 minified is almost 1MB)
     (https://github.com/photonstorm/phaser3-custom-build)
   - Pause & resume when leaving fullscreen: https://github.com/photonstorm/phaser3-examples/blob/master/public/src/scenes/pause%20and%20resume.js
   - Set CSS background color to match canvas, so we don't need to have larger canvas
