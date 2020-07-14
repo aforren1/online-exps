@@ -5,6 +5,7 @@
   --color-darkblue: #1b1b32;
   --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
   --color-green: #37af65;
+  --color-darkgray: #111111;
 }
 
 *,
@@ -17,7 +18,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.0;
+  line-height: 1.4;
   color: var(--color-white);
   margin: 0;
 }
@@ -31,6 +32,10 @@ body::before {
   height: 100%;
   width: 100%;
   z-index: -1;
+  background: var(--color-darkgray);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 h1 {
@@ -72,9 +77,9 @@ button {
 .container {
   width: 400px;
   height: 400px;
+  margin: 0 auto 0;
+  margin-left: 150px;
   overflow-y: scroll;
-  max-height: 100%; 
-  margin: 0 auto;
 }
 
 @media (min-width: 576px) {
@@ -172,6 +177,7 @@ form {
   border-radius: 2px;
   cursor: pointer;
 }
+
 
 /*We hide the username field to catch improper users*/
 label#user { display: none; }

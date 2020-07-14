@@ -1,8 +1,8 @@
 // entirely from https://phaser.io/examples/v3/view/game-objects/dom-element/form-input#
 var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 900,
+    height: 750,
     parent: 'phaser-example',
     dom: {
         createContainer: true
@@ -23,8 +23,12 @@ function preload ()
 
 function create()
 {
-    var text = this.add.text(10, 10, 'Age will show here.', { color: 'white', fontFamily: 'Arial', fontSize: '32px'});
-    var element = this.add.dom(400, 300).createFromCache('form');
+    this.cameras.main.setBounds(-config.width / 2, -config.height / 2, config.width, config.height);
+    text = this.add.text(0, 300, 'Other settings in console.\nFullscreen+DOM element does not\nwork well yet.', { color: 'green', fontFamily: 'Arial', fontsize: '24px' });
+    text.setOrigin(0.5, 0.5);
+    var text = this.add.text(0, -300, 'Age will show here.', { color: 'white', fontFamily: 'Arial', fontSize: '32px' });
+    text.setOrigin(0.5, 0.5);
+    var element = this.add.dom(0, 0).createFromCache('form');
     element.addListener('click');
 
     element.on('click', function (event) {
