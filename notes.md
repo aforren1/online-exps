@@ -113,6 +113,7 @@ https://psychopy.org/timing/2020/table3.html
  - Tried emscripten + SDL to get higher resolution clocks + no mouse acceleration, and was thoroughly unsuccessful (everything calls down to web tech in the end)
  - "native messaging" is an option, but intrusive (how do people install the app??)
  - Nice thread about MTurk https://discourse.psychopy.org/t/how-to-use-mturk-for-recruiting/8486/7
+ - PsychoJS tries to block GPU immediately after calling pixi render()
  
 # Linkz
 https://sites.williams.edu/nk2/files/2018/10/VCK.pdf <-- this is gold, apparently (addresses most things I care about)

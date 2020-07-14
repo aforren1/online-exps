@@ -11,7 +11,7 @@ var config = {
     scene: {
         create: create
     },
-    desynchronized: true, // here be dragons (and also only works in chrome)
+    //desynchronized: true, // here be dragons (and also only works in chrome)
     stencil: false // presumably this saves us some amount of CPU/GPU?
 };
 

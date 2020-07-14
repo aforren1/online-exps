@@ -1,9 +1,13 @@
 // entirely from https://phaser.io/examples/v3/view/game-objects/dom-element/form-input#
+// also demonstrates doing full screen without making the entire canvas fullscreen
 var config = {
     type: Phaser.AUTO,
     width: 900,
     height: 750,
     parent: 'phaser-example',
+    scale: {
+        autoCenter: Phaser.Scale.CENTER
+    },
     dom: {
         createContainer: true
     },
@@ -14,7 +18,7 @@ var config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 0 }
+            gravity: { y: 500 }
         }
     },
 };
@@ -29,6 +33,9 @@ function preload ()
 
 function create()
 {
+    this.input.once('pointerup', function () {
+        this.scale.startFullscreen();
+    }, this);
     this.cameras.main.setBounds(-config.width / 2, -config.height / 2, config.width, config.height);
     this.cameras.main.setBackgroundColor('rgb(100, 100, 100)');
     text = this.add.text(0, 300, 'Other settings in console.\nFullscreen+DOM element does not\nwork well yet.', { color: 'green', fontFamily: 'Arial', fontsize: '24px' });
