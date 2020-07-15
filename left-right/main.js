@@ -19,6 +19,9 @@ var game = new Phaser.Game(config);
 
 function create()
 {
+    this.input.once('pointerup', function () {
+        this.scale.startFullscreen();
+    }, this);
     this.cameras.main.setBounds(-config.width / 2, -config.height / 2,
         config.width, screen.height);
     var target = this.add.circle(0,
