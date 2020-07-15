@@ -1,6 +1,6 @@
 var config = {
     type: Phaser.AUTO,
-    width: parseInt(screen.height * 0.8),// * window.devicePixelRatio,
+    width: screen.width,// * window.devicePixelRatio,
     height: screen.height,// * window.devicePixelRatio,
     scale: {
         mode: Phaser.Scale.FIT,
