@@ -4,12 +4,13 @@ window.addEventListener('devtoolschange', event => {
 });
 
 var parser = new UAParser();
-console.log(JSON.stringify(parser.getResult()));
+var ua_str = JSON.stringify(parser.getResult(), undefined, 2);
+console.log(ua_str);
 
 var config = {
     type: Phaser.WEBGL,
-    width: 400,// * window.devicePixelRatio,
-    height: 400,// * window.devicePixelRatio,
+    width: 900,// * window.devicePixelRatio,
+    height: 600,// * window.devicePixelRatio,
     autoRound: false,
     backgroundColor: '#2d2d2d',
     parent: 'phaser-example',
@@ -41,6 +42,8 @@ function create ()
         yoyo: true,
         repeat: -1
     });
+
+    this.add.text(-config.width / 2, -config.height / 2, ua_str);
 }
 
 function update ()
