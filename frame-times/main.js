@@ -6,6 +6,7 @@ Timestamps through Phaser
  - dom/RequestAnimationFrame `step()` calls `performance.now()` first thing in "real" requestAnimationFrame callback: https://github.com/photonstorm/phaser/blob/v3.22.0/src/dom/RequestAnimationFrame.js#L106, and passes that timestamp to another callback (TimeStep.step(), as far as I can tell)
  - TimeStep.js calls `performance.now()` again, apparently ignoring the time from dom/RequestAnimationFrame? (https://github.com/photonstorm/phaser/blob/8c977bc391296ac5510ce248906e0bf52f9cff4d/src/core/TimeStep.js#L480)
  - The TimeStep.js timestamp gets passed to the rest of the game/events/such (https://github.com/photonstorm/phaser/blob/8c977bc391296ac5510ce248906e0bf52f9cff4d/src/core/Game.js#L456)
+ - According to commit, `TimeStep.now` is the "exact perf.now value as set at the start of the current game step"
 
  Chrome, windows:
  In cursory tests, the difference between the "real" rAF and fake is roughly 300us, but saw at least one ~800us delay
