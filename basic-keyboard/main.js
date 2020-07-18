@@ -12,7 +12,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 function create() {
-    var text = this.add.text(200, 200, 'Press the "W" key.', { color: 'green', fontFamily: 'Arial', fontSize: '32px' });
+    var text = this.add.text(200, 200, 'Press the "9" key.', { color: 'green', fontFamily: 'Arial', fontSize: '32px' });
     var text2 = this.add.text(200, 300, '');
     var text3 = this.add.text(200, 330, '');
     var text4 = this.add.text(200, 360, '');
@@ -20,7 +20,7 @@ function create() {
     text2.setOrigin(0.5, 0.5);
     text3.setOrigin(0.5, 0.5);
     text4.setOrigin(0.5, 0.5);
-    var keyObj = this.input.keyboard.addKey('W');  // Get key object
+    var keyObj = this.input.keyboard.addKey('NINE');  // Get key object
     keyObj.on('down', function (event) {
         text2.setText('Press time: ' + event.timeDown);
     });
