@@ -1,4 +1,4 @@
 [build]
-functions = "netlify-functions"
-command = "yarn dev"
+#functions = "netlify-functions"
+#command = "yarn dev"
 
