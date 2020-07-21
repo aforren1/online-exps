@@ -61,7 +61,9 @@ function create ()
         // pix * (mm/pix) = mm
         // mm * (pix/mm) = pix
         // scale factor is (pix/mm)
-        scale_factor_txt.text = 'Scale factor (pix per mm) ' + scale_factor.toFixed(4);
+        scale_factor_txt.text = 'Scale factor (pix per mm) ' + scale_factor.toFixed(4) +
+            '\nEst width: ' + (screen.width/scale_factor).toFixed(2) +
+            'mm, height: ' + (screen.height/scale_factor).toFixed(2) + 'mm';
     });
 }
 
