@@ -27,11 +27,11 @@ function create ()
         this.scale.startFullscreen();
     }, this);
     this.cameras.main.setBounds(-config.width / 2, -config.height / 2, config.width, config.height);
-    var line = this.add.rectangle(0, 400, 800, 20, 0xffffff);
+    var line = this.add.rectangle(0, 350, 800, 20, 0xffffff);
 
     var slide_cir = this.add.circle(0, 0, 50, 0x222222).setStrokeStyle(2, 0xff0000, 2).setOrigin(0.5, 0.5);
     var slide_txt = this.add.text(0, 0, 'Drag Me', { color: 'white', fontFamily: 'Arial', fontSize: '26px' }).setOrigin(0.5, 0.5);
-    var slide_handle = this.add.container(0, 400, [slide_cir, slide_txt]).setSize(400, 400);
+    var slide_handle = this.add.container(0, 350, [slide_cir, slide_txt]).setSize(400, 400);
     var slider = this.plugins.get('rexsliderplugin').add(slide_handle, {
         endPoints: [
             {
@@ -52,7 +52,7 @@ function create ()
     var corner_note = this.add.text(-sizer.width / 2 - 120 -100, -sizer.height / 2 - 100 -100, 'Align credit card\nwith this corner',
         { color: 'white', fontFamily: 'Arial', fontSize: '32px' });
     
-    var scale_factor_txt = this.add.text(0, -500, '', { color: 'white', fontFamily: 'Arial', fontSize: '40px' }).setOrigin(0.5, 0.5);
+    var scale_factor_txt = this.add.text(0, -400, '', { color: 'white', fontFamily: 'Arial', fontSize: '40px' }).setOrigin(0.5, 0.5);
 
     slider.on('valuechange', function (newValue, prevValue) {
         var scale_factor = newValue * 10;
