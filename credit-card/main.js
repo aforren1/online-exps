@@ -31,6 +31,7 @@ function create ()
 
     var slide_cir = this.add.circle(0, 0, 50, 0x222222).setStrokeStyle(2, 0xff0000, 2).setOrigin(0.5, 0.5);
     var slide_txt = this.add.text(0, 0, 'Drag Me', { color: 'white', fontFamily: 'Arial', fontSize: '26px' }).setOrigin(0.5, 0.5);
+    slide_txt.setStroke('#aaffff', 2);
     var slide_handle = this.add.container(0, 350, [slide_cir, slide_txt]).setSize(400, 400);
     var slider = this.plugins.get('rexsliderplugin').add(slide_handle, {
         endPoints: [
@@ -53,6 +54,7 @@ function create ()
         { color: 'white', fontFamily: 'Arial', fontSize: '32px' });
     
     var scale_factor_txt = this.add.text(0, -400, '', { color: 'white', fontFamily: 'Arial', fontSize: '40px' }).setOrigin(0.5, 0.5);
+    scale_factor_txt.setStroke('#ff0000', 4);
 
     slider.on('valuechange', function (newValue, prevValue) {
         var scale_factor = newValue * 10;

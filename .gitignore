@@ -2,3 +2,4 @@
 mturk-notes/
 .env
 node_modules/
+credentials.json
