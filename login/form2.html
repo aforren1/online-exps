@@ -1,0 +1,50 @@
+<style>
+.kwest {
+    background: #eeeeee;
+    overflow-y: scroll;
+    padding: 10px;
+    max-height: 800px;
+}
+
+label#user { display: none; }
+input#username {display: none; }
+
+</style>
+<div class="kwest">
+    <input type="text" placeholder="Username" id="username" name="username"><br>
+    <input type="number" placeholder="Age" min="18" max="125" id="age" name="age"><br>
+    <p>Sex assigned at birth:</p>
+    <input type="radio" name="sex" id="sex1" value="na" checked>
+    <label for="sex1">Prefer not to respond</label><br>
+    <input type="radio" name="sex" id="sex2" value="female">
+    <label for="sex2">Female</label><br>
+    <input type="radio" name="sex" id="sex3" value="male">
+    <label for="sex3">Male</label><br>
+    <input type="radio" name="sex" id="sex4" value="intersex">
+    <label for="sex4">Intersex</label><br>
+
+    <p>Race:</p>
+    <input type="checkbox" name="race" id="race1" value="nat_am" class="input-checkbox">
+    <label for="race1">American Indian or Alaska Native</label><br>
+    <input type="checkbox" name="race" id="race2" value="asian" class="input-checkbox">
+    <label for="race2">Asian</label><br>
+    <input type="checkbox" name="race" id="race3" value="black" class="input-checkbox">
+    <label for="race3">Black</label><br>
+    <input type="checkbox" name="race" id="race4" value="pacific" class="input-checkbox">
+    <label for="race4">Native Hawaiian or Other Pacific Islander</label><br>
+    <input type="checkbox" name="race" id="race5" value="white" class="input-checkbox">
+    <label for="race5">White</label><br>
+
+    <p>Ethnicity:</p>
+    <input type="radio" name="eth" id="eth1" value="na" class="input-radio" checked>
+    <label for="eth1">Prefer not to respond</label><br>
+    <input type="radio" name="eth" id="eth2" value="hispanic" class="input-radio">
+    <label for="eth2">Hispanic or Latino or Spanish Origin</label><br>
+    <input type="radio" name="eth" id="eth3" value="not_hispanic" class="input-radio">
+    <label for="eth3">Not Hispanic or Latino or Spanish Origin</label><br>
+
+    <!-- see https://github.com/photonstorm/phaser3-examples/blob/master/public/src/game%20objects/dom%20element/form%20input.js
+    for example of how to access data -->
+    <br>
+    <input type="submit" value="Submit" name="submit">
+</div>

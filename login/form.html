@@ -2,7 +2,7 @@
 <!--Very much based on https://codepen.io/freeCodeCamp/pen/VPaoNP-->
 
 <head>
-  <link rel="stylesheet" type="text/css" href="form.css">
+  <!-- <link rel="stylesheet" type="text/css" href="form.css"> -->
 </head>
 <div class="container">
 
@@ -23,9 +23,8 @@
     <!--https://center.dso.iastate.edu/sites/default/files/Documents/Classroom/Asking%20about%20Gender%20and%20Sexuality.pdf-->
     <div class="form-group">
       <p>Sex Assigned at Birth</p>
-      <label>
-        <input type="radio" name="sex" value="na" class="input-radio" checked>Prefer not to respond
-      </label>
+      <input type="radio" id="na" name="sex" value="na" class="input-radio" checked>
+      <label for="na">Prefer not to respond</label>
       <label>
         <input type="radio" name="sex" value="male" class="input-radio">Male
       </label>
